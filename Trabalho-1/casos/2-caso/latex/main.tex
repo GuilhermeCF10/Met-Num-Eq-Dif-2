@@ -1,8 +1,8 @@
-\section*{Caso: \( D = 0.001 \)}
+\subsection{Caso: \( D = 0.001 \)}
 
 
 % T = 0
-\subsection*{Análise para o caso: \( D = 0.001 \) e \( t = 0 \)}
+\subsubsection{Análise para o caso: \( D = 0.001 \) e \( t = 0 \)}
 
 A Figura \ref{fig:advec_diffus_0.001_t0} mostra a distribuição da concentração de soluto no tempo inicial para um coeficiente de difusão \( D = 0.001 \). Neste caso, a diferença entre a advecção pura e a advecção-difusão é quase imperceptível, indicando que a influência da difusão é extremamente limitada neste estágio inicial. A forma retangular do perfil de concentração mantém-se praticamente inalterada, destacando o efeito mínimo da difusão quando \( D \) é substancialmente reduzido.
 
@@ -20,7 +20,7 @@ A Figura \ref{fig:advec_diffus_0.001_t0} mostra a distribuição da concentraç�
 \end{table}
 
 % T = 1
-\subsection*{Análise para o caso: \( D = 0.001 \) e \( t = 1 \)}
+\subsubsection{Análise para o caso: \( D = 0.001 \) e \( t = 1 \)}
 
 A Figura \ref{fig:advec_diffus_0.001_t1} mostra a distribuição da concentração de soluto no tempo \( t = 1 \) para um coeficiente de difusão \( D = 0.001 \). Semelhante ao tempo \( t = 0 \), a difusão tem um efeito ainda muito limitado sobre a distribuição da concentração, que permanece praticamente idêntica à advecção pura. Isso demonstra que, para valores extremamente baixos de \( D \), a difusão é insuficiente para alterar significativamente o perfil inicial da concentração mesmo após um intervalo de tempo.
 
@@ -39,7 +39,7 @@ A Figura \ref{fig:advec_diffus_0.001_t1} mostra a distribuição da concentraç�
 
 
 % T = 2
-\subsection*{Análise para o caso: \( D = 0.001 \) e \( t = 2 \)}
+\subsubsection{Análise para o caso: \( D = 0.001 \) e \( t = 2 \)}
 
 A Figura \ref{fig:advec_diffus_0.001_t2} mostra a distribuição da concentração de soluto no tempo \( t = 2 \) para um coeficiente de difusão \( D = 0.001 \). Neste momento, a diferença entre a advecção pura e a advecção-difusão continua sendo mínima, indicando que mesmo com o passar do tempo, a difusão com um coeficiente tão baixo não tem um impacto significativo na forma da distribuição da concentração. O perfil continua essencialmente retangular, destacando que a advecção domina o transporte do soluto.
 
@@ -57,7 +57,7 @@ A Figura \ref{fig:advec_diffus_0.001_t2} mostra a distribuição da concentraç�
 \end{table}
 
 % T = 3
-\subsection*{Análise para o caso: \( D = 0.001 \) e \( t = 3 \)}
+\subsubsection{Análise para o caso: \( D = 0.001 \) e \( t = 3 \)}
 
 A Figura \ref{fig:advec_diffus_0.001_t3} mostra a distribuição da concentração de soluto no tempo \( t = 3 \) para um coeficiente de difusão \( D = 0.001 \). Neste ponto, a advecção pura e a advecção-difusão continuam a apresentar perfis praticamente idênticos, com o perfil de concentração mantendo a forma retangular, evidenciando o efeito mínimo da difusão neste coeficiente.
 
@@ -74,22 +74,51 @@ A Figura \ref{fig:advec_diffus_0.001_t3} mostra a distribuição da concentraç�
     \input{code/latex/Tabela_Advec_Difus_t3_D0.001.tex}
 \end{table}
 
-% Falta continuar do D0.001 t4
-
 
 % T = 4
+\subsubsection{Análise para o caso: \( D = 0.001 \) e \( t = 4 \)}
 
+A Figura \ref{fig:advec_diffus_0.001_t4} mostra a distribuição da concentração de soluto no tempo \( t = 4 \) para um coeficiente de difusão \( D = 0.001 \). Como nos momentos anteriores, a advecção pura e a advecção-difusão apresentam perfis quase idênticos, indicando que a difusão continua a ter um impacto muito limitado no perfil de concentração. Este padrão ressalta que, para coeficientes de difusão extremamente baixos como \( D = 0.001 \), a advecção domina predominantemente a dinâmica do transporte de soluto.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.7\textwidth]{code/plot/Advec_Difus_t4_D0.001.png}
+    \caption{Comparação das soluções de advecção e advecção-difusão para \( D = 0.001 \) no tempo \( t = 4 \). A linha tracejada representa a advecção pura, enquanto a linha contínua, quase indistinguível, ilustra a falta de efeito significativo da difusão.}
+    \label{fig:advec_diffus_0.001_t4}
+\end{figure}
+
+\begin{table}[H]
+    \centering
+    \caption{Valores numéricos da concentração para \( D = 0.001 \) e \( t = 4 \)}
+    \input{code/latex/Tabela_Advec_Difus_t4_D0.001.tex}
+\end{table}
 
 
 % T = 5
+\subsubsection{Análise para o caso: \( D = 0.001 \) e \( t = 5 \)}
+
+A Figura \ref{fig:advec_diffus_0.001_t5} mostra a distribuição da concentração de soluto no tempo \( t = 5 \) para um coeficiente de difusão \( D = 0.001 \). Como nos intervalos anteriores, a difusão continua a ter um impacto praticamente inexistente na forma da distribuição da concentração, com o perfil mantendo uma forma retangular quase idêntica à advecção pura. Esta consistência reforça a ideia de que, com valores extremamente baixos de \( D \), a difusão é insuficiente para alterar o perfil de concentração de maneira significativa ao longo do tempo observado.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.7\textwidth]{code/plot/Advec_Difus_t5_D0.001.png}
+    \caption{Comparação das soluções de advecção e advecção-difusão para \( D = 0.001 \) no tempo \( t = 5 \). A linha tracejada representa a advecção pura, enquanto a linha contínua, quase indistinguível, continua a mostrar o efeito mínimo da difusão.}
+    \label{fig:advec_diffus_0.001_t5}
+\end{figure}
+
+\begin{table}[H]
+    \centering
+    \caption{Valores numéricos da concentração para \( D = 0.001 \) e \( t = 5 \)}
+    \input{code/latex/Tabela_Advec_Difus_t5_D0.001.tex}
+\end{table}
 
 
-% % Conclusão do Caso
-% \subsection*{Conclusão do Caso: \( D = 0.1 \)}
-% Ao longo dos intervalos observados, de \( t = 0 \) a \( t = 5 \), as soluções numéricas para a equação de advecção-difusão com um coeficiente de difusão \( D = 0.1 \) mostraram um padrão claro e consistente de alterações na distribuição da concentração de soluto. Inicialmente, em \( t = 0 \), a advecção pura e a advecção-difusão começam com o mesmo perfil retangular de concentração, mas rapidamente divergem à medida que o tempo avança.
+% Conclusão do Caso
+\subsection{Conclusão do Caso: \( D = 0.001 \)}
+Ao longo dos intervalos observados, de \( t = 0 \) a \( t = 5 \), as soluções numéricas para a equação de advecção-difusão com um coeficiente de difusão \( D = 0.001 \) mostraram uma estabilidade notável na distribuição da concentração de soluto. Inicialmente, em \( t = 0 \), e prosseguindo até \( t = 5 \), tanto a advecção pura quanto a advecção-difusão mantiveram perfis praticamente idênticos, indicando que a difusão teve um impacto mínimo na evolução da concentração.
 
-% Com o aumento do tempo, a difusão exerce um impacto crescente na dispersão do soluto, resultando em perfis de concentração cada vez mais suavizados e alargados para a advecção-difusão. A advecção pura, por sua natureza, simplesmente translada o pulso de concentração sem alterar sua forma, enquanto a difusão, mesmo sendo moderada pelo valor relativamente pequeno de \( D = 0.1 \), efetivamente suaviza e alarga o pico de concentração, aumentando significativamente as caudas do perfil distribuído.
+A constância do perfil retangular ao longo do tempo sugere que, para coeficientes de difusão extremamente baixos como \( D = 0.001 \), a difusão é insuficiente para modificar significativamente a dinâmica do transporte de soluto, que é dominada pela advecção. Mesmo com o passar do tempo, a forma da distribuição de concentração permanece inalterada, destacando a limitada influência da difusão neste regime.
 
-% Por \( t = 5 \), a diferença entre advecção pura e advecção-difusão é dramática. A distribuição sob influência da difusão mostra um pico que não apenas é mais alto e mais agudo do que nos estágios iniciais, mas também se estende muito além da localização original do pulso, demonstrando o poder da difusão em moldar a dinâmica do transporte de massa em meios contínuos.
+Esta análise evidencia que, enquanto a difusão pode ter efeitos dramáticos em coeficientes maiores, como observado com \( D = 0.1 \), em níveis mais baixos, ela é praticamente negligenciável para alterar a dispersão da concentração de soluto em fluxos advectivos. Isto ressalta a importância de considerar o valor absoluto do coeficiente de difusão ao avaliar o transporte de massa em contextos práticos, especialmente em sistemas onde a advecção é significativamente mais influente do que a difusão.
 
-% Esta análise ressalta a importância da difusão na modulação das características de transporte de solutos em fluxos advectivos, particularmente em contextos onde a uniformidade da dispersão é crucial para as implicações práticas, como em processos químicos, ambientais e biológicos. A escolha de \( D = 0.1 \), embora modesta, ilustra eficazmente como mesmo pequenas taxas de difusão podem influenciar significativamente a dinâmica de sistemas de transporte advectivo ao longo do tempo.
+Este caso de \( D = 0.001 \), portanto, serve como um exemplo claro de como coeficientes de difusão extremamente baixos são inadequados para promover mudanças substanciais na distribuição de solutos, sendo necessário avaliar com cuidado a escolha dos parâmetros em modelos de advecção-difusão para prever corretamente a dinâmica de sistemas em engenharia e ciências ambientais.

@@ -1,0 +1,127 @@
+\section*{Caso: \( D = 1 \times 10^{-5} \)}
+
+
+% T = 0
+\subsection*{Análise para o caso: \( D = 1 \times 10^{-5} \) e \( t = 0 \)}
+A Figura \ref{fig:advec_diffus_1e-05_t0} mostra a distribuição da concentração de soluto no tempo inicial para um coeficiente de difusão \( D = 1 \times 10^{-5} \). Neste caso, observamos que a difusão tem um impacto ainda mais reduzido do que em exemplos anteriores com difusões maiores. A forma retangular inicial praticamente não é alterada, indicando que a advecção domina completamente o transporte do soluto, com a difusão sendo quase negligenciável neste estágio.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.7\textwidth]{code/plot/Advec_Difus_t0_D1e-05.png}
+    \caption{Comparação das soluções de advecção e advecção-difusão para \( D = 1 \times 10^{-5} \) no tempo \( t = 0 \). A linha tracejada representa a advecção pura, enquanto a linha contínua, quase coincidente com a advecção pura, indica a advecção-difusão.}
+    \label{fig:advec_diffus_1e-05_t0}
+\end{figure}
+
+\begin{table}[H]
+    \centering
+    \caption{Valores numéricos da concentração para \( D = 1 \times 10^{-5} \) e \( t = 0 \)}
+    \input{code/latex/Tabela_Advec_Difus_t0_D1e-05.tex}
+\end{table}
+
+
+% T = 1
+\subsubsection{Análise para o caso: \( D = 1 \times 10^{-5} \) e \( t = 1 \)}
+
+A Figura \ref{fig:advec_diffus_1e-05_t1} mostra a distribuição da concentração de soluto no tempo \( t = 1 \) para um coeficiente de difusão \( D = 1 \times 10^{-5} \). Semelhante ao observado em \( t = 0 \), a difusão tem um efeito ainda muito limitado sobre a distribuição da concentração, que permanece praticamente idêntica à advecção pura. A forma retangular do perfil de concentração persiste sem alterações significativas, demonstrando que, para valores de difusão tão baixos, a difusão não consegue modificar de maneira apreciável a dinâmica imposta pela advecção.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.7\textwidth]{code/plot/Advec_Difus_t1_D1e-05.png}
+    \caption{Comparação das soluções de advecção e advecção-difusão para \( D = 1 \times 10^{-5} \) no tempo \( t = 1 \). A linha tracejada representa a advecção pura, enquanto a linha contínua, quase indistinguível, continua a mostrar o efeito mínimo da difusão.}
+    \label{fig:advec_diffus_1e-05_t1}
+\end{figure}
+
+\begin{table}[H]
+    \centering
+    \caption{Valores numéricos da concentração para \( D = 1 \times 10^{-5} \) e \( t = 1 \)}
+    \input{code/latex/Tabela_Advec_Difus_t1_D1e-05.tex}
+\end{table}
+
+
+
+% T = 2
+\subsubsection{Análise para o caso: \( D = 1 \times 10^{-5} \) e \( t = 2 \)}
+
+A Figura \ref{fig:advec_diffus_1e-05_t2} mostra a distribuição da concentração de soluto no tempo \( t = 2 \) para um coeficiente de difusão \( D = 1 \times 10^{-5} \). Continuando o padrão observado nos momentos anteriores, a difusão não apresenta um impacto visível na forma da distribuição da concentração, que mantém o perfil retangular. Isso reforça a noção de que, com valores tão baixos de \( D \), a advecção continua sendo a força dominante, com a difusão não proporcionando alterações significativas no transporte do soluto.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.7\textwidth]{code/plot/Advec_Difus_t2_D1e-05.png}
+    \caption{Comparação das soluções de advecção e advecção-difusão para \( D = 1 \times 10^{-5} \) no tempo \( t = 2 \). A linha tracejada representa a advecção pura, enquanto a linha contínua, quase indistinguível, ilustra o efeito mínimo da difusão.}
+    \label{fig:advec_diffus_1e-05_t2}
+\end{figure}
+
+\begin{table}[H]
+    \centering
+    \caption{Valores numéricos da concentração para \( D = 1 \times 10^{-5} \) e \( t = 2 \)}
+    \input{code/latex/Tabela_Advec_Difus_t2_D1e-05.tex}
+\end{table}
+
+
+% T = 3
+\subsubsection{Análise para o caso: \( D = 1 \times 10^{-5} \) e \( t = 3 \)}
+
+A Figura \ref{fig:advec_diffus_1e-05_t3} mostra a distribuição da concentração de soluto no tempo \( t = 3 \) para um coeficiente de difusão \( D = 1 \times 10^{-5} \). Assim como nos tempos anteriores, a advecção pura e a advecção-difusão apresentam perfis quase idênticos, com a difusão tendo um impacto ainda inexpressivo sobre a forma da distribuição da concentração. O perfil retangular se mantém praticamente inalterado, reforçando que a advecção domina a dinâmica do transporte do soluto.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.7\textwidth]{code/plot/Advec_Difus_t3_D1e-05.png}
+    \caption{Comparação das soluções de advecção e advecção-difusão para \( D = 1 \times 10^{-5} \) no tempo \( t = 3 \). A linha tracejada representa a advecção pura, enquanto a linha contínua, ainda quase indistinguível, ilustra o efeito mínimo da difusão.}
+    \label{fig:advec_diffus_1e-05_t3}
+\end{figure}
+
+\begin{table}[H]
+    \centering
+    \caption{Valores numéricos da concentração para \( D = 1 \times 10^{-5} \) e \( t = 3 \)}
+    \input{code/latex/Tabela_Advec_Difus_t3_D1e-05.tex}
+\end{table}
+
+
+% T = 4
+\subsubsection{Análise para o caso: \( D = 1 \times 10^{-5} \) e \( t = 4 \)}
+
+A Figura \ref{fig:advec_diffus_1e-05_t4} mostra a distribuição da concentração de soluto no tempo \( t = 4 \) para um coeficiente de difusão \( D = 1 \times 10^{-5} \). Continuando com as observações anteriores, a diferença entre a advecção pura e a advecção-difusão é mínima, com a difusão mostrando pouca ou nenhuma capacidade de alterar significativamente o perfil da concentração que permanece quase exclusivamente dominado pela advecção.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.7\textwidth]{code/plot/Advec_Difus_t4_D1e-05.png}
+    \caption{Comparação das soluções de advecção e advecção-difusão para \( D = 1 \times 10^{-5} \) no tempo \( t = 4 \). A linha tracejada representa a advecção pura, enquanto a linha contínua, quase indistinguível, ilustra o efeito mínimo da difusão.}
+    \label{fig:advec_diffus_1e-05_t4}
+\end{figure}
+
+\begin{table}[H]
+    \centering
+    \caption{Valores numéricos da concentração para \( D = 1 \times 10^{-5} \) e \( t = 4 \)}
+    \input{code/latex/Tabela_Advec_Difus_t4_D1e-05.tex}
+\end{table}
+
+
+
+% T = 5
+\subsubsection{Análise para o caso: \( D = 1 \times 10^{-5} \) e \( t = 5 \)}
+A Figura \ref{fig:advec_diffus_1e-05_t5} mostra a distribuição da concentração de soluto no tempo \( t = 5 \) para um coeficiente de difusão \( D = 1 \times 10^{-5} \). Consistente com as observações em tempos anteriores, a advecção pura e a advecção-difusão mantêm perfis quase idênticos, com diferenças negligíveis entre eles. Este padrão indica que, mesmo ao longo de um intervalo de tempo estendido, a difusão extremamente baixa não consegue influenciar de maneira significativa a distribuição da concentração, que é amplamente dominada pela advecção.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.7\textwidth]{code/plot/Advec_Difus_t5_D1e-05.png}
+    \caption{Comparação das soluções de advecção e advecção-difusão para \( D = 1 \times 10^{-5} \) no tempo \( t = 5 \). A linha tracejada representa a advecção pura, enquanto a linha contínua, quase indistinguível, continua a ilustrar o efeito mínimo da difusão.}
+    \label{fig:advec_diffus_1e-05_t5}
+\end{figure}
+
+\begin{table}[H]
+    \centering
+    \caption{Valores numéricos da concentração para \( D = 1 \times 10^{-5} \) e \( t = 5 \)}
+    \input{code/latex/Tabela_Advec_Difus_t5_D1e-05.tex}
+\end{table}
+
+
+
+% Conclusão do Caso
+\subsection*{Conclusão do Caso: \( D = 1 \times 10^{-5} \)}
+Ao longo dos intervalos observados, de \( t = 0 \) a \( t = 5 \), as soluções numéricas para a equação de advecção-difusão com um coeficiente de difusão \( D = 1 \times 10^{-5} \) mostraram uma estabilidade notável na distribuição da concentração de soluto. Desde o tempo inicial até \( t = 5 \), tanto a advecção pura quanto a advecção-difusão mantiveram perfis quase idênticos, destacando que a difusão teve um impacto praticamente nulo na evolução da concentração.
+
+A persistência do perfil retangular ao longo do tempo sugere que, para coeficientes de difusão extremamente baixos como \( D = 1 \times 10^{-5} \), a difusão é insuficiente para modificar significativamente a dinâmica do transporte de soluto, que é dominada pela advecção. Mesmo com o passar do tempo, a forma da distribuição de concentração permanece inalterada, reforçando a limitada influência da difusão neste regime.
+
+Esta análise ressalta que, enquanto a difusão pode ter efeitos significativos em coeficientes maiores, como observado com \( D = 0.1 \), em níveis mais baixos, ela é praticamente negligenciável para alterar a dispersão da concentração de soluto em fluxos advectivos. Isto sublinha a importância de considerar o valor absoluto do coeficiente de difusão ao avaliar o transporte de massa em contextos práticos, especialmente em sistemas onde a advecção é significativamente mais influente do que a difusão.
+
+Este caso de \( D = 1 \times 10^{-5} \), portanto, serve como um exemplo claro de como coeficientes de difusão extremamente baixos são inadequados para promover mudanças substanciais na distribuição de solutos, sendo necessário avaliar cuidadosamente a escolha dos parâmetros em modelos de advecção-difusão para prever corretamente a dinâmica de sistemas em engenharia e ciências ambientais.

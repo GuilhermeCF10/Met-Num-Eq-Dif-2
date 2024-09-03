@@ -2,11 +2,11 @@
     \thispagestyle{empty} % Remove números de página
     \setstretch{1.5} % Espaçamento entre linhas, certifique-se de que o pacote setspace está incluído em document.tex
 
-    \noindent\textbf{\Large Materiais utilizados}
+    \noindent\textbf{\Large Materiais Utilizados}
 
     \vspace{1cm} % Espaço vertical
 
-    Esta seção detalha os materiais e as configurações de software e hardware utilizados para a modelagem e o controle de um sistema dinâmico do tipo massa-mola-amortecedor. Utilizando a plataforma Scilab versão 2024.1.0, este trabalho foca na implementação de modelos matemáticos e na análise de resposta do sistema sob diversas condições iniciais e configurações de controle, simulados no ambiente do Ubuntu 24.04 LTS.
+    Esta seção detalha os materiais e as configurações de software e hardware utilizados para o estudo e a simulação de equações diferenciais de advecção e advecção-difusão. Utilizando Python versão 3.11, este trabalho foca na implementação de modelos matemáticos e na análise de resposta do sistema sob diversas condições, simulados no ambiente do Ubuntu 24.04 LTS.
 
     \vspace{0.3cm} % Espaço vertical
 
@@ -16,8 +16,15 @@
 
     \vspace{0.3cm} % Espaço vertical
 
-    \textbf{Versão do Scilab:}
+    \textbf{Versão do Python e Bibliotecas Utilizadas:}
 
-    A versão 2024.1.0 do Scilab foi utilizada para todas as simulações, proporcionando funcionalidades atualizadas e melhorias de desempenho. É importante destacar que mudanças entre versões do Scilab podem influenciar a execução de códigos devido a alterações em algoritmos e funções, o que é crucial para a replicação exata dos resultados em ambientes distintos.
+    Python versão 3.11 foi utilizado para todas as simulações. As bibliotecas utilizadas incluem:
+    \begin{itemize}
+        \item \textbf{NumPy}: Utilizado para manipulação de arrays e operações matemáticas.
+        \item \textbf{Matplotlib}: Empregada para a criação de gráficos e visualizações de dados.
+        \item \textbf{SciPy}: Utilizado, especificamente o módulo \textit{erf}, para cálculos relacionados com funções especiais necessárias nas soluções das equações.
+        \item \textbf{Pandas}: Utilizado para manipulação de dados e geração de tabelas.
+        \item \textbf{Jinja2}: Empregado para a formatação de saída de dados, facilitando a criação de relatórios e documentos.
+    \end{itemize}
 
 \end{titlepage}
