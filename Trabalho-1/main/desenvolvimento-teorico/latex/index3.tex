@@ -1,0 +1,109 @@
+\section{Desenvolvimento Teórico}
+
+Neste trabalho, consideramos duas equações diferenciais parciais (EDPs) que modelam o transporte de uma substância em um meio contínuo: a equação de advecção unidimensional e a equação de advecção-difusão unidimensional. Ambas as equações são resolvidas analiticamente para um domínio infinito, \(-\infty < x < +\infty\), e assumimos uma condição inicial que confina o soluto a um intervalo finito \( -L < x < L \).
+
+\subsection{Solução Analítica da Equação de Advecção}
+
+A equação de advecção unidimensional, sob a hipótese de velocidade constante de advecção \( u = \bar{u} \), é dada por:
+
+\begin{equation}
+    \frac{\partial c}{\partial t} + \bar{u} \frac{\partial c}{\partial x} = 0,
+\end{equation}
+
+onde \( c(x,t) \) representa a concentração do soluto. A condição inicial é definida por:
+
+\begin{equation}
+    c(x, 0) = \tilde{c}(x) = \begin{cases}
+    c_0, & \text{se } -L < x < L, \\
+    0, & \text{caso contrário}.
+    \end{cases}
+\end{equation}
+
+Para resolver essa equação, utilizamos a abordagem de d'Alembert, que consiste em acompanhar a evolução do soluto ao longo das características. Considerando um observador que se move com a velocidade \( \bar{u} \), temos:
+
+\begin{equation}
+    \frac{d c}{d t} = \frac{\partial c}{\partial t} + \bar{u} \frac{\partial c}{\partial x} = 0.
+\end{equation}
+
+A solução da equação característica é dada por:
+
+\begin{equation}
+    x(t) = x(0) + \bar{u} t,
+\end{equation}
+
+o que implica que \( c \) é constante ao longo das curvas características \( x = x(0) + \bar{u} t \). Substituindo a condição inicial na solução geral, obtemos:
+
+\begin{equation}
+    c(x, t) = \tilde{c}(x - \bar{u}t) = \begin{cases}
+    c_0, & \text{se } -L + \bar{u}t < x < L + \bar{u}t, \\
+    0, & \text{caso contrário}.
+    \end{cases}
+\end{equation}
+
+Essa solução descreve o transporte do soluto ao longo do eixo \( x \) com velocidade \( \bar{u} \), mantendo sua concentração constante dentro do intervalo \( -L + \bar{u}t \) até \( L + \bar{u}t \).
+
+\subsection{Solução Analítica da Equação de Advecção-Difusão}
+
+A equação de advecção-difusão unidimensional, que incorpora o efeito da difusão além da advecção, é expressa por:
+
+\begin{equation}
+    \frac{\partial c}{\partial t} + \bar{u} \frac{\partial c}{\partial x} = D \frac{\partial^2 c}{\partial x^2},
+\end{equation}
+
+onde \( D \) é o coeficiente de difusão. A condição inicial permanece a mesma:
+
+\begin{equation}
+    c(x, 0) = \tilde{c}(x) = \begin{cases}
+    c_0, & \text{se } -L < x < L, \\
+    0, & \text{caso contrário}.
+    \end{cases}
+\end{equation}
+
+Para resolver essa equação, realizamos uma mudança de variável para simplificar a equação original. Definimos a nova variável dependente \( W(x, t) \) como:
+
+\begin{equation}
+    W(x, t) = c(x, t) \exp\left( -\frac{\bar{u} x}{2D} + \frac{\bar{u}^2 t}{4D} \right).
+\end{equation}
+
+Substituindo \( W(x, t) \) na equação original, obtemos uma equação de difusão pura:
+
+\begin{equation}
+    \frac{\partial W}{\partial t} = D \frac{\partial^2 W}{\partial x^2},
+\end{equation}
+
+com a condição inicial transformada:
+
+\begin{equation}
+    W(x, 0) = \tilde{W}(x) = \begin{cases}
+    c_0 \exp\left( -\frac{\bar{u} x}{2D} \right), & \text{se } -L < x < L, \\
+    0, & \text{caso contrário}.
+    \end{cases}
+\end{equation}
+
+A solução geral para essa equação, em um meio infinito e sem termos fonte, pode ser expressa usando a função de Green:
+
+\begin{equation}
+    W(x, t) = \int_{-\infty}^{+\infty} G(x - x', t) \tilde{W}(x') \, dx',
+\end{equation}
+
+onde \( G(x - x', t) \) é a função de Green dada por:
+
+\begin{equation}
+    G(x - x', t) = \frac{1}{\sqrt{4\pi D t}} \exp\left( -\frac{(x - x')^2}{4Dt} \right).
+\end{equation}
+
+Substituindo as expressões de \( \tilde{W}(x') \) e \( G(x - x', t) \) na integral, e resolvendo-a, obtemos a solução para \( W(x, t) \). Finalmente, revertendo a mudança de variável, a solução para \( c(x, t) \) é dada por:
+
+\begin{equation}
+    c(x, t) = \frac{c_0}{2} \left\{ \text{erf} \left[ \frac{L + (x - \bar{u}t)}{\sqrt{4Dt}} \right] + \text{erf} \left[ \frac{L - (x - \bar{u}t)}{\sqrt{4Dt}} \right] \right\},
+\end{equation}
+
+onde \( \text{erf}(\cdot) \) é a função erro.
+
+Essa solução descreve a propagação e a dispersão do soluto, considerando tanto o transporte advectivo quanto a difusão, resultando em uma distribuição mais espalhada ao longo do tempo.
+
+\subsection{Análise Comparativa}
+
+Para uma análise comparativa, consideramos as soluções das Eqs. (1) e (9) para diferentes instantes de tempo, no intervalo \( t = 0 \) a \( t = 5 \). Na implementação numérica, utilizamos os parâmetros \( L = 1.0 \), \( \bar{u} = 1.5 \), e \( c_0 = 1.5 \). Além disso, comparamos as soluções da Eq. (9) para diferentes coeficientes de difusão \( D = 1 \times 10^{-5} \), \( 1 \times 10^{-3} \) e \( 1 \times 10^{-1} \).
+
+Os resultados são apresentados na forma de tabelas e gráficos, destacando as diferenças nas distribuições de concentração para os diversos valores de \( D \) e ao longo do tempo, permitindo uma compreensão mais aprofundada dos efeitos da difusão no transporte do soluto.

@@ -1,0 +1,107 @@
+\section{Desenvolvimento Teórico}
+
+Neste trabalho, abordamos duas equações diferenciais parciais (EDPs) que são fundamentais para modelar o transporte de substâncias em um meio contínuo: a equação de advecção unidimensional e a equação de advecção-difusão unidimensional. Ambas as equações são resolvidas de forma analítica, assumindo que o domínio é infinito, ou seja, \( -\infty < x < +\infty \), e que a substância (ou soluto) está inicialmente concentrada em uma região finita \( -L < x < L \).
+
+\subsection{Solução Analítica da Equação de Advecção}
+
+A equação de advecção unidimensional descreve o transporte de uma substância quando esta é levada por um fluxo com velocidade constante \( u = \bar{u} \). A equação é expressa como:
+
+\begin{equation}
+    \frac{\partial c}{\partial t} + \bar{u} \frac{\partial c}{\partial x} = 0,
+\end{equation}
+
+onde \( c(x,t) \) representa a concentração da substância no ponto \( x \) e no instante \( t \). A condição inicial, que define a distribuição inicial da substância, é dada por:
+
+\begin{equation}
+    c(x, 0) = \tilde{c}(x) = \begin{cases}
+        c_0, & \text{se } -L < x < L, \\
+        0,   & \text{caso contrário}.
+    \end{cases}
+\end{equation}
+
+Para resolver essa equação, utilizamos o conceito de características, onde acompanhamos a substância ao longo do tempo, assumindo que ela se move com a mesma velocidade \( \bar{u} \) do fluxo. Isso significa que, para um observador se movendo junto com a substância, a concentração não muda. Matematicamente, isso é expresso por:
+
+\begin{equation}
+    \frac{d c}{d t} = \frac{\partial c}{\partial t} + \bar{u} \frac{\partial c}{\partial x} = 0.
+\end{equation}
+
+A equação acima nos diz que a concentração \( c \) é constante ao longo das curvas características, que são dadas por:
+
+\begin{equation}
+    x(t) = x(0) + \bar{u} t,
+\end{equation}
+
+Substituindo essa relação na condição inicial, obtemos a solução geral da equação de advecção:
+
+\begin{equation}
+    c(x, t) = \tilde{c}(x - \bar{u}t) = \begin{cases}
+        c_0, & \text{se } -L + \bar{u}t < x < L + \bar{u}t, \\
+        0,   & \text{caso contrário}.
+    \end{cases}
+\end{equation}
+
+Essa solução indica que a substância é transportada ao longo do eixo \( x \) com a velocidade \( \bar{u} \), mantendo sua concentração constante dentro de uma região que se desloca ao longo do tempo.
+
+\subsection{Solução Analítica da Equação de Advecção-Difusão}
+
+Agora, consideramos a equação de advecção-difusão, que não só leva em conta o transporte advectivo, mas também a dispersão da substância devido à difusão. A equação é expressa como:
+
+\begin{equation}
+    \frac{\partial c}{\partial t} + \bar{u} \frac{\partial c}{\partial x} = D \frac{\partial^2 c}{\partial x^2},
+\end{equation}
+
+onde \( D \) é o coeficiente de difusão. A condição inicial é a mesma usada para a equação de advecção:
+
+\begin{equation}
+    c(x, 0) = \tilde{c}(x) = \begin{cases}
+        c_0, & \text{se } -L < x < L, \\
+        0,   & \text{caso contrário}.
+    \end{cases}
+\end{equation}
+
+Para resolver essa equação, simplificamos o problema através de uma transformação de variável. Introduzimos uma nova variável dependente \( W(x, t) \), definida como:
+
+\begin{equation}
+    W(x, t) = c(x, t) \exp\left( -\frac{\bar{u} x}{2D} + \frac{\bar{u}^2 t}{4D} \right).
+\end{equation}
+
+Essa transformação tem o efeito de remover o termo de advecção da equação, resultando em uma equação de difusão pura:
+
+\begin{equation}
+    \frac{\partial W}{\partial t} = D \frac{\partial^2 W}{\partial x^2},
+\end{equation}
+
+A condição inicial para \( W(x, t) \) também é transformada de acordo:
+
+\begin{equation}
+    W(x, 0) = \tilde{W}(x) = \begin{cases}
+        c_0 \exp\left( -\frac{\bar{u} x}{2D} \right), & \text{se } -L < x < L, \\
+        0,                                            & \text{caso contrário}.
+    \end{cases}
+\end{equation}
+
+A solução dessa equação de difusão, considerando um domínio infinito e sem termos de fonte, pode ser obtida usando a função de Green, que fornece a solução em termos de uma integral convolucional:
+
+\begin{equation}
+    W(x, t) = \int_{-\infty}^{+\infty} G(x - x', t) \tilde{W}(x') \, dx',
+\end{equation}
+
+onde a função de Green \( G(x - x', t) \) é dada por:
+
+\begin{equation}
+    G(x - x', t) = \frac{1}{\sqrt{4\pi D t}} \exp\left( -\frac{(x - x')^2}{4Dt} \right).
+\end{equation}
+
+Ao substituir \( \tilde{W}(x') \) e \( G(x - x', t) \) na integral e resolvê-la, obtemos a solução para \( W(x, t) \). Finalmente, ao reverter a transformação de variável, recuperamos a solução para \( c(x, t) \):
+
+\begin{equation}
+    c(x, t) = \frac{c_0}{2} \left\{ \text{erf} \left[ \frac{L + (x - \bar{u}t)}{\sqrt{4Dt}} \right] + \text{erf} \left[ \frac{L - (x - \bar{u}t)}{\sqrt{4Dt}} \right] \right\},
+\end{equation}
+
+onde \( \text{erf}(\cdot) \) é a função erro, que descreve como a substância se espalha e se desloca ao longo do tempo, considerando tanto a advecção quanto a difusão.
+
+\subsection{Análise Comparativa}
+
+Finalmente, para entender melhor os efeitos da advecção e da difusão no transporte da substância, comparamos as soluções das duas equações (1) e (9) para diferentes instantes de tempo no intervalo \( t = 0 \) a \( t = 5 \). Na simulação numérica, utilizamos os parâmetros \( L = 1.0 \), \( \bar{u} = 1.5 \), e \( c_0 = 1.5 \). Além disso, variamos o coeficiente de difusão \( D \) para três valores diferentes: \( 1 \times 10^{-5} \), \( 1 \times 10^{-3} \) e \( 1 \times 10^{-1} \).
+
+Os resultados serão apresentados em forma de tabelas e gráficos, que mostrarão como a substância se comporta ao longo do tempo para diferentes condições. Essa análise permitirá observar como a difusão afeta a dispersão do soluto em comparação com o transporte puramente advectivo.

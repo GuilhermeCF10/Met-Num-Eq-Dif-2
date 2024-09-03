@@ -1,0 +1,86 @@
+\section{Desenvolvimento Teórico}
+
+Neste trabalho, investigamos o comportamento de uma substância transportada em um meio contínuo, considerando dois modelos fundamentais: a equação de advecção e a equação de advecção-difusão. Esses modelos são resolvidos analiticamente para um domínio infinito, onde \( -\infty < x < +\infty \), e assumimos que a substância está inicialmente confinada em um intervalo finito \( -L < x < L \).
+
+\subsection{Equação de Advecção}
+
+A equação de advecção unidimensional descreve o transporte de uma substância em um meio quando esta é movida por um fluxo constante. Matematicamente, ela é expressa por:
+
+\begin{equation}
+    \frac{\partial c}{\partial t} + \bar{u} \frac{\partial c}{\partial x} = 0,
+\end{equation}
+
+onde \( c(x,t) \) representa a concentração da substância no ponto \( x \) e no tempo \( t \), enquanto \( \bar{u} \) é a velocidade constante do fluxo. A condição inicial para essa equação é:
+
+\begin{equation}
+    c(x, 0) = \tilde{c}(x) = \begin{cases}
+    c_0, & \text{se } -L < x < L, \\
+    0, & \text{caso contrário}.
+    \end{cases}
+\end{equation}
+
+Para encontrar a solução, seguimos o conceito das características, que nos permite acompanhar a trajetória da substância ao longo do tempo, assumindo que ela se move com a velocidade \( \bar{u} \). Isso implica que, ao longo dessa trajetória, a concentração \( c \) permanece constante. A solução geral, então, é:
+
+\begin{equation}
+    c(x, t) = \tilde{c}(x - \bar{u}t) = \begin{cases}
+    c_0, & \text{se } -L + \bar{u}t < x < L + \bar{u}t, \\
+    0, & \text{caso contrário}.
+    \end{cases}
+\end{equation}
+
+Essa solução mostra que a substância é transportada ao longo do eixo \( x \) com a velocidade \( \bar{u} \), mantendo sua concentração constante dentro da região delimitada pelo intervalo \( -L + \bar{u}t \) a \( L + \bar{u}t \).
+
+\subsection{Equação de Advecção-Difusão}
+
+A equação de advecção-difusão leva em conta não apenas o transporte da substância pelo fluxo, mas também o efeito da difusão, que tende a espalhar a substância ao longo do tempo. A equação é formulada como:
+
+\begin{equation}
+    \frac{\partial c}{\partial t} + \bar{u} \frac{\partial c}{\partial x} = D \frac{\partial^2 c}{\partial x^2},
+\end{equation}
+
+onde \( D \) é o coeficiente de difusão, representando a intensidade do espalhamento da substância. A condição inicial para este modelo é similar à usada na equação de advecção:
+
+\begin{equation}
+    c(x, 0) = \tilde{c}(x) = \begin{cases}
+    c_0, & \text{se } -L < x < L, \\
+    0, & \text{caso contrário}.
+    \end{cases}
+\end{equation}
+
+Para resolver essa equação, aplicamos uma mudança de variável que simplifica o problema. Definimos uma nova variável \( W(x, t) \) como:
+
+\begin{equation}
+    W(x, t) = c(x, t) \exp\left( -\frac{\bar{u} x}{2D} + \frac{\bar{u}^2 t}{4D} \right).
+\end{equation}
+
+Essa transformação elimina o termo de advecção, deixando uma equação de difusão pura:
+
+\begin{equation}
+    \frac{\partial W}{\partial t} = D \frac{\partial^2 W}{\partial x^2},
+\end{equation}
+
+A solução dessa equação, considerando um domínio infinito e uma condição inicial transformada, pode ser encontrada utilizando a função de Green:
+
+\begin{equation}
+    W(x, t) = \int_{-\infty}^{+\infty} G(x - x', t) \tilde{W}(x') \, dx',
+\end{equation}
+
+onde \( G(x - x', t) \) é a função de Green, expressa por:
+
+\begin{equation}
+    G(x - x', t) = \frac{1}{\sqrt{4\pi D t}} \exp\left( -\frac{(x - x')^2}{4Dt} \right).
+\end{equation}
+
+Finalmente, ao reverter a transformação inicial, obtemos a solução para a concentração \( c(x, t) \):
+
+\begin{equation}
+    c(x, t) = \frac{c_0}{2} \left\{ \text{erf} \left[ \frac{L + (x - \bar{u}t)}{\sqrt{4Dt}} \right] + \text{erf} \left[ \frac{L - (x - \bar{u}t)}{\sqrt{4Dt}} \right] \right\},
+\end{equation}
+
+onde \( \text{erf}(\cdot) \) é a função erro, que descreve a dispersão e o transporte da substância ao longo do tempo.
+
+\subsection{Comparação das Soluções}
+
+Para entender a diferença entre os dois modelos, comparamos as soluções das equações de advecção e advecção-difusão em diferentes instantes de tempo, variando o coeficiente de difusão \( D \). A comparação revela como a difusão afeta a dispersão da substância, tornando a distribuição mais homogênea à medida que \( D \) aumenta, em contraste com o transporte puramente advectivo, onde a substância se move sem dispersão significativa.
+
+Os resultados dessas comparações são apresentados em tabelas e gráficos, mostrando claramente como diferentes valores de \( D \) influenciam a propagação da substância ao longo do tempo.
