@@ -1,55 +1,54 @@
-# Projeto de Modelagem e Controle de Sistemas
+# Projeto de Métodos Numéricos para Equações Diferenciais II
 
-Este repositório contém o desenvolvimento do projeto de modelagem e controle de sistemas, realizado como parte do curso de Engenharia da Computação na Universidade do Estado do Rio de Janeiro (UERJ), Instituto Politécnico (IPRJ).
+Este repositório contém o desenvolvimento do projeto de Métodos Numéricos para Equações Diferenciais II, realizado como parte do curso de Engenharia da Computação na Universidade do Estado do Rio de Janeiro (UERJ), Instituto Politécnico (IPRJ).
 
 ## Descrição do Projeto
 
-O objetivo deste projeto é explorar a modelagem e o controle de um sistema dinâmico do tipo massa-mola-amortecedor. Utilizando a plataforma Scilab para o desenvolvimento e simulação, o estudo se concentra na implementação de modelos matemáticos para descrever a dinâmica do sistema e na análise de sua resposta sob diferentes condições iniciais.
+O objetivo deste projeto é explorar soluções numéricas e analíticas para equações de advecção e advecção-difusão, utilizando Python. O estudo se concentra na implementação de modelos matemáticos e na análise da dinâmica de solutos em fluxos unidimensionais sob várias condições.
 
 ## Estrutura do Repositório
 
-- **Códigos Scilab**: Scripts que modelam e simulam o sistema massa-mola-amortecedor.
-- **Arquivos Xcos**: Diagramas de blocos para simulação gráfica do sistema.
-- **Imagens Geradas**: Gráficos e figuras gerados durante a simulação e análise do sistema.
-- **Texto Redigido**: Documentação completa do projeto, incluindo relatório e explicações detalhadas.
-- **Outras Informações**: Qualquer outra informação relevante relacionada ao projeto.
+- **Códigos Python**: Scripts que modelam e simulam os fenômenos de advecção e advecção-difusão.
+- **Notebooks Jupyter**: Notebooks detalhando os cálculos e visualizações das soluções.
+- **Imagens Geradas**: Gráficos e figuras gerados durante a simulação e análise dos fenômenos.
+- **Documentação**: Documentação completa do projeto, incluindo relatório técnico e explicação detalhada dos métodos utilizados.
 
 ## Conteúdo
 
-### Códigos Scilab
+### Códigos Python
 
-Os códigos Scilab incluem scripts para:
+Os códigos Python incluem scripts para:
 
-- Modelagem do sistema massa-mola-amortecedor.
-- Simulação do sistema sob diferentes condições iniciais.
-- Análise de estabilidade utilizando o critério de Routh-Hurwitz.
-- Ajuste de controladores PID utilizando as regras de Ziegler-Nichols.
+- Modelagem das equações de advecção e advecção-difusão.
+- Simulação do comportamento dos solutos sob diferentes coeficientes de difusão.
+- Visualização das soluções numéricas e analíticas.
 
-### Arquivos Xcos
+### Notebooks Jupyter
 
-Os arquivos Xcos são diagramas de blocos que possibilitam a simulação gráfica do sistema, facilitando a visualização e compreensão do comportamento do sistema sob diferentes condições.
+Os Notebooks Jupyter facilitam a interação com o código e permitem uma exploração visual das soluções, incluindo:
+
+- Demonstração passo a passo das simulações.
+- Análises comparativas entre diferentes configurações de parâmetros.
 
 ### Imagens Geradas
 
 Os gráficos e figuras gerados durante as simulações são armazenados aqui, incluindo:
 
-- Gráficos de resposta do sistema para diferentes condições iniciais.
-- Diagramas de estabilidade e resposta transitória.
-- Diagramas de Bode e Nyquist.
+- Gráficos de dispersão de soluto para diferentes configurações de difusão.
+- Análises de comportamento dinâmico dos solutos em diferentes cenários.
 
-### Texto Redigido
+### Documentação
 
 A documentação do projeto inclui:
 
-- Introdução e objetivos do projeto.
-- Descrição detalhada das atividades realizadas.
-- Análise e discussão dos resultados.
-- Conclusões e considerações finais.
+- Introdução aos métodos numéricos para equações diferenciais.
+- Descrição metodológica das simulações realizadas.
+- Discussão dos resultados obtidos e suas implicações teóricas e práticas.
 
 ## Acesso ao Repositório
 
 Para acessar o código completo e outras informações adicionais, visite o repositório do projeto no GitHub:
-[https://github.com/GuilhermeCF10/UERJ-IPRJ-MCS](https://github.com/GuilhermeCF10/UERJ-IPRJ-MCS)
+[https://github.com/GuilhermeCF10/Met-Num-Eq-Dif-2/tree/main/Trabalho-1](https://github.com/GuilhermeCF10/Met-Num-Eq-Dif-2/tree/main/Trabalho-1)
 
 ## Sobre o Autor
 
