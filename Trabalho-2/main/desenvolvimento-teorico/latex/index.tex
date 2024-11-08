@@ -1,0 +1,49 @@
+\section{Desenvolvimento Teórico}
+
+A equação de advecção unidimensional descreve o transporte de uma quantidade conservada, como a concentração de um traçador, ao longo de um eixo espacial. Para resolver essa equação numericamente, é utilizado o método dos Volumes Finitos, que permite a discretização do espaço e do tempo, garantindo uma formulação adequada para a conservação da quantidade transportada. A equação de advecção, em sua forma conservativa, é dada por:
+
+\begin{equation}
+    \frac{\partial \Phi}{\partial t} + \frac{\partial}{\partial x} (u \Phi) = 0,
+\end{equation}
+
+onde $\Phi$ representa a variável dependente (concentração do traçador) e $u$ é a velocidade de advecção. Com $u$ constante, a equação simplifica-se para:
+
+\begin{equation}
+    \frac{\partial \Phi}{\partial t} + u \frac{\partial \Phi}{\partial x} = 0.
+\end{equation}
+
+Neste trabalho, a solução numérica é obtida utilizando quatro métodos clássicos:
+
+\begin{itemize}
+    \item \textbf{Método Upwind de Primeira Ordem}: Este método é conhecido por sua simplicidade e robustez, especialmente em casos onde a solução apresenta descontinuidades. A sua forma discretizada é dada por:
+
+    \begin{equation}
+        Q_i^{n+1} = Q_i^n - C (Q_i^n - Q_{i-1}^n),
+    \end{equation}
+
+    onde $C = \frac{u \Delta t}{\Delta x}$ é o número de Courant. Esse método calcula o fluxo considerando apenas os valores à montante, garantindo estabilidade para $0 \leq C \leq 1$.
+
+    \item \textbf{Método de Lax-Wendroff}: Este método de segunda ordem melhora a precisão incluindo uma aproximação da derivada de segunda ordem. Sua formulação é:
+
+    \begin{equation}
+        Q_i^{n+1} = Q_i^n - 0.5 \, C \, (Q_{i+1}^n - Q_{i-1}^n) + 0.5 \, C^2 \, (Q_{i-1}^n - 2 Q_i^n + Q_{i+1}^n).
+    \end{equation}
+
+    \item \textbf{Método de Beam-Warming}: Também de segunda ordem, o método Beam-Warming é uma extensão do método Upwind, onde é adicionado um termo de correção para melhorar a precisão, sendo dado por:
+
+    \begin{equation}
+        Q_i^{n+1} = Q_i^n - C (Q_i^n - Q_{i-1}^n) - 0.5 \, C \, (1 - C) \, (Q_i^n - 2 Q_{i-1}^n + Q_{i-2}^n).
+    \end{equation}
+
+    \item \textbf{Método de Fromm}: Este método utiliza uma média entre o Upwind e a diferença centrada para garantir a precisão de segunda ordem, com a forma:
+
+    \begin{equation}
+        Q_i^{n+1} = Q_i^n - 0.25 \, C \, (Q_{i+1}^n + 3 Q_i^n - 5 Q_{i-1}^n + Q_{i-2}^n) + 0.25 \, C^2 \, (Q_{i+1}^n - Q_i^n - Q_{i-1}^n + Q_{i-2}^n).
+    \end{equation}
+\end{itemize}
+
+Todos esses métodos são implementados considerando condições de contorno periódicas para assegurar a continuidade do traçador no domínio espacial. O valor do número de Courant é fixado em $C = 0,8$, respeitando a condição CFL, que assegura a estabilidade das soluções numéricas.
+
+Cada método é aplicado para resolver a equação de advecção em três diferentes instantes de tempo ($t=1$, $t=3$ e $t=5$), com o objetivo de comparar a precisão e o comportamento da solução ao longo do tempo. O perfil inicial da concentração é definido por uma função gaussiana somada a um valor constante em um intervalo específico, representando uma concentração localizada.
+
+Os resultados obtidos são analisados por meio de gráficos comparativos e tabelas que apresentam os valores da concentração em pontos específicos do espaço, permitindo observar o desempenho de cada método e sua capacidade de manter a forma do perfil de concentração ao longo do tempo.

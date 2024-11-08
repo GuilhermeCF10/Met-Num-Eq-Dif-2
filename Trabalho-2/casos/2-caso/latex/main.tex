@@ -1,0 +1,70 @@
+\subsection{O Método Lax-Wendroff}
+
+O método de segunda ordem de Lax-Wendroff é obtido pela introdução de uma aproximação do tipo diferença avançada para a derivada $\frac{\partial \Phi}{\partial x}$ [1]. No formalismo aqui empregado, para o método REA, com uma reconstrução linear por partes, temos que:
+
+\begin{equation}
+\sigma_{i-1}^n = \frac{Q_i^n - Q_{i-1}^n}{\Delta x}
+\end{equation}
+
+\begin{equation}
+\sigma_{i}^n = \frac{Q_{i+1}^n - Q_i^n}{\Delta x}
+\end{equation}
+
+Assim, a partir dessas inclinações, podemos obter o algoritmo explícito para esse método a partir da Equação (11):
+
+\begin{equation}
+Q_i^{n+1} = Q_i^n - \frac{C}{2} (Q_{i+1}^n - Q_{i-1}^n) + \frac{C^2}{2} (Q_{i-1}^n - 2 Q_i^n + Q_{i+1}^n)
+\end{equation}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\textwidth]{code/images/Lax-Wendroff.png}
+    \caption{Solução Lax-Wendroff para $t=1$, $t=3$, e $t=5$, com a condição inicial representada pela linha tracejada.}
+\end{figure}
+
+\begin{table}[H]
+    \centering
+    \input{code/tables/Lax-Wendroff.tex}
+    \caption{Tabela de resultados para o método Lax-Wendroff nas posições espaciais selecionadas e diferentes tempos}
+    \label{tab:lax_wendroff}
+\end{table}
+
+\subsection{Análise dos Resultados do Método Lax-Wendroff}
+
+O método Lax-Wendroff, sendo de segunda ordem, oferece uma precisão maior que o método Upwind ao reduzir a dissipação numérica, mas pode introduzir oscilações indesejadas em torno de descontinuidades. Na Figura , observamos que para \( t=1 \), a solução mantém bem o perfil da condição inicial. No entanto, para \( t=3 \) e \( t=5 \), começam a surgir pequenas oscilações nas regiões de transição, típicas deste método. Essas oscilações são resultado da aproximação de alta ordem e podem ser amenizadas com métodos adicionais de controle de oscilação.
+
+\subsection{Implementação em Python}
+
+O código em Python é utilizado para resolver a advecção com o método Lax-Wendroff, aplicando condições de contorno periódicas. O código é estruturado com uma função principal \texttt{resolverAdveccao} para calcular a solução da advecção para diferentes métodos numéricos e uma função específica para o método Lax-Wendroff.
+
+\begin{lstlisting}[language=Python, caption={Código para resolver a advecção usando o método Lax-Wendroff}, label={lst:codigo_lax_wendroff}]
+# Função para resolver a advecção com diferentes métodos numéricos
+def resolverAdveccao(metodo, condicaoInicial, intervaloTempo, intervaloEspacial, numeroCourant, tempoFinal):
+    """
+    Calcula a solução da advecção para um determinado método e tempo final.
+    """
+    densidade = condicaoInicial.copy()
+    tempoAtual = 0
+    while tempoAtual < tempoFinal:
+        densidade = metodo(densidade, intervaloTempo, intervaloEspacial, numeroCourant)
+        tempoAtual += intervaloTempo
+    return densidade
+
+# Método Lax-Wendroff com condições de contorno periódicas
+def metodoLaxWendroff(densidade, intervaloTempo, intervaloEspacial, numeroCourant):
+    """
+    Calcula a solução de advecção usando o método Lax-Wendroff.
+    """
+    novaDensidade = densidade.copy()
+    for i in range(numPontosEspaco):
+        novaDensidade[i] = densidade[i] - 0.5 * numeroCourant * (densidade[(i+1) \% numPontosEspaco] - densidade[i-1]) + \
+                            0.5 * numeroCourant**2 * (densidade[i-1] - 2 * densidade[i] + densidade[(i+1) \% numPontosEspaco])
+    return novaDensidade
+
+# Cálculo da densidade para diferentes tempos
+densidadeLaxWendroff1 = resolverAdveccao(metodoLaxWendroff, condicaoInicial, intervaloTempo, intervaloEspacial, numeroCourant, tempoFinal1)
+densidadeLaxWendroff3 = resolverAdveccao(metodoLaxWendroff, condicaoInicial, intervaloTempo, intervaloEspacial, numeroCourant, tempoFinal3)
+densidadeLaxWendroff5 = resolverAdveccao(metodoLaxWendroff, condicaoInicial, intervaloTempo, intervaloEspacial, numeroCourant, tempoFinal5)
+\end{lstlisting}
+
+A função \texttt{resolverAdveccao} calcula a evolução da densidade ao longo do tempo até atingir o tempo final especificado. A função \texttt{metodoLaxWendroff} implementa o método Lax-Wendroff para calcular a nova densidade em cada ponto do espaço, utilizando o número de Courant especificado.

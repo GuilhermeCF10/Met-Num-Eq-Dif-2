@@ -1,0 +1,7 @@
+\section{Conclusão Geral}
+
+A comparação entre os métodos numéricos para a resolução da equação de advecção unidimensional destaca diferentes compromissos entre precisão e estabilidade. O método Upwind de primeira ordem apresentou maior dissipação numérica, suavizando o perfil da solução e reduzindo a amplitude ao longo do tempo, comportamento comum em métodos de menor ordem conforme discutido por LeVeque \cite{leveque2002finite}.
+
+Os métodos de segunda ordem Lax-Wendroff, Beam-Warming e Fromm apresentaram uma preservação superior do perfil inicial e uma dissipação reduzida. Entretanto, métodos como Lax-Wendroff e Beam-Warming introduzem pequenas oscilações nas regiões de transição, principalmente em tempos mais longos. Entre as opções de segunda ordem, o método Fromm se mostrou mais equilibrado, oferecendo boa precisão com oscilações mínimas e mantendo a estabilidade ao longo do tempo.
+
+Esses resultados indicam que a escolha do método deve considerar o compromisso entre simplicidade e fidelidade na representação da solução. Para problemas onde a precisão é essencial, métodos de segunda ordem são recomendados, enquanto o método Upwind pode ser adequado para simulações que priorizem estabilidade e simplicidade.

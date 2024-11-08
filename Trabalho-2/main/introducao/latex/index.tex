@@ -1,0 +1,9 @@
+\section{Introdução}
+
+A equação de advecção é uma ferramenta matemática crucial para modelar o transporte de substâncias em um fluido, sendo amplamente empregada em áreas da engenharia e das ciências aplicadas. Neste trabalho, a equação de advecção unidimensional é resolvida numericamente utilizando o método dos Volumes Finitos com quatro abordagens diferentes: Upwind de primeira ordem, Lax-Wendroff, Beam-Warming e Fromm. Essas abordagens são implementadas para modelar a evolução temporal da concentração de um traçador, com o objetivo de avaliar e comparar as soluções fornecidas por cada método.
+
+Para garantir a estabilidade das simulações, é fixado o número de Courant em $C = 0,8$, respeitando a condição CFL. A condição inicial do traçador é definida por uma combinação de uma função gaussiana e uma função por partes que representa uma concentração constante em um intervalo específico do domínio. Cada método é aplicado para obter a solução numérica da equação nos instantes de tempo $t=1$, $t=3$ e $t=5$, sob condições de contorno periódicas.
+
+Os resultados são visualizados por meio de gráficos que comparam as concentrações obtidas em cada instante com a condição inicial, o que permite observar o comportamento das soluções e a precisão dos métodos. Além disso, as saídas numéricas são salvas em formato de tabelas, facilitando uma análise quantitativa da evolução da concentração ao longo do tempo.
+
+O código feito foi organizado de forma a gerar automaticamente os gráficos e tabelas, armazenando-os em diretórios específicos. Este trabalho, portanto, fornece uma implementação prática e comparativa de métodos numéricos para a solução de problemas de advecção, com foco na análise de precisão e comportamento de cada método ao longo do tempo.

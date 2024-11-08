@@ -1,0 +1,73 @@
+\subsection{O Método Fromm}
+
+O último método considerado, o método de Fromm, também é de segunda ordem e é obtido a partir da utilização de uma aproximação do tipo diferença centrada para $\frac{\partial \Phi}{\partial x}$ [1]:
+
+\begin{equation}
+\sigma_{i-1}^n = \frac{Q_i^n - Q_{i-2}^n}{2 \Delta x}
+\end{equation}
+
+\begin{equation}
+\sigma_{i}^n = \frac{Q_{i+1}^n - Q_{i-1}^n}{2 \Delta x}
+\end{equation}
+
+Então, a sua forma final discretizada é dada por:
+
+\begin{equation}
+Q_i^{n+1} = Q_i^n - \frac{C}{4} (Q_{i+1}^n + 3 Q_i^n - 5 Q_{i-1}^n + Q_{i-2}^n) - \frac{C^2}{4} (Q_{i+1}^n - Q_i^n - Q_{i-1}^n + Q_{i-2}^n)
+\end{equation}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\textwidth]{code/images/Fromm.png}
+    \caption{Solução Fromm para $t=1$, $t=3$, e $t=5$, com a condição inicial representada pela linha tracejada.}
+\end{figure}
+
+\begin{table}[H]
+    \centering
+    \input{code/tables/Fromm.tex}
+    \caption{Tabela de resultados para o método Fromm nas posições espaciais selecionadas e diferentes tempos}
+    \label{tab:fromm}
+\end{table}
+
+\subsection{Análise dos Resultados do Método Fromm}
+
+O método Fromm é uma abordagem de segunda ordem que combina o Upwind com uma diferença centrada, melhorando a precisão e reduzindo a dissipação. Na Figura, vemos que para \( t = 1 \) a solução mantém bem o perfil da condição inicial. Nos tempos \( t = 3 \) e \( t = 5 \), o método preserva a forma da onda com poucas oscilações e sem a dissipação notável vista em métodos de primeira ordem. No geral, o método Fromm demonstra um bom equilíbrio entre precisão e estabilidade para a resolução da equação de advecção.
+
+
+\subsection{Implementação em Python}
+
+O código em Python é utilizado para resolver a advecção com o método Fromm, aplicando condições de contorno periódicas. O código é estruturado com uma função principal \texttt{resolverAdveccao} para calcular a solução da advecção para diferentes métodos numéricos e uma função específica para o método Fromm.
+
+\begin{lstlisting}[language=Python, caption={Código para resolver a advecção usando o método Fromm}, label={lst:codigo_fromm}]
+# Função para resolver a advecção com diferentes métodos numéricos
+def resolverAdveccao(metodo, condicaoInicial, intervaloTempo, intervaloEspacial, numeroCourant, tempoFinal):
+    """
+    Calcula a solução da advecção para um determinado método e tempo final.
+    """
+    densidade = condicaoInicial.copy()
+    tempoAtual = 0
+    while tempoAtual < tempoFinal:
+        densidade = metodo(densidade, intervaloTempo, intervaloEspacial, numeroCourant)
+        tempoAtual += intervaloTempo
+    return densidade
+
+# Método Fromm com condições de contorno periódicas
+def metodoFromm(densidade, intervaloTempo, intervaloEspacial, numeroCourant):
+    """
+    Calcula a solução de advecção usando o método Fromm.
+    """
+    novaDensidade = densidade.copy()
+    for i in range(numPontosEspaco):
+        novaDensidade[i] = densidade[i] - 0.25 * numeroCourant * (densidade[(i+1) \% numPontosEspaco] + 3 * densidade[i] - \
+                                5 * densidade[i-1] + densidade[i-2]) + \
+                            0.25 * numeroCourant**2 * (densidade[(i+1) \% numPontosEspaco] - densidade[i] - \
+                                                        densidade[i-1] + densidade[i-2])
+    return novaDensidade
+
+# Cálculo da densidade para diferentes tempos
+densidadeFromm1 = resolverAdveccao(metodoFromm, condicaoInicial, intervaloTempo, intervaloEspacial, numeroCourant, tempoFinal1)
+densidadeFromm3 = resolverAdveccao(metodoFromm, condicaoInicial, intervaloTempo, intervaloEspacial, numeroCourant, tempoFinal3)
+densidadeFromm5 = resolverAdveccao(metodoFromm, condicaoInicial, intervaloTempo, intervaloEspacial, numeroCourant, tempoFinal5)
+\end{lstlisting}
+
+A função \texttt{resolverAdveccao} calcula a evolução da densidade ao longo do tempo até atingir o tempo final especificado. A função \texttt{metodoFromm} implementa o método Fromm para calcular a nova densidade em cada ponto do espaço, utilizando o número de Courant especificado.

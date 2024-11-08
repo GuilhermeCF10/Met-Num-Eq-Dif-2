@@ -1,0 +1,69 @@
+\subsection{O Método Upwind}
+
+Em se tratando do método Upwind de primeira ordem, para $\bar{u} > 0$, sua forma geral é obtida da Equação (11), considerando $\sigma_i^n = \sigma_{i-1}^n = 0$:
+
+\begin{equation}
+Q_i^{n+1} = Q_i^n - \frac{\bar{u} \Delta t}{\Delta x} (Q_i^n - Q_{i-1}^n)
+\end{equation}
+
+ou ainda, introduzindo o número de Courant $C = \frac{\bar{u} \Delta t}{\Delta x}$:
+
+\begin{equation}
+Q_i^{n+1} = Q_i^n - C (Q_i^n - Q_{i-1}^n)
+\end{equation}
+
+
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\textwidth]{code/images/Upwind.png}
+    \caption{Solução Upwind para $t=1$, $t=3$, e $t=5$, com a condição inicial representada pela linha tracejada.}
+\end{figure}
+
+
+\begin{table}[H]
+    \centering
+    \input{code/tables/Upwind.tex}
+    \caption{Tabela de resultados para o método Lax-Wendroff nas posições espaciais selecionadas e diferentes tempos}
+    \label{tab:upwind}
+\end{table}
+
+\subsection{Análise dos Resultados do Método Upwind}
+
+A Figura mostra a aplicação do método Upwind para \( t = 1 \), \( t = 3 \) e \( t = 5 \), comparando a solução numérica com a condição inicial. Observa-se que o método Upwind introduz dissipação numérica, suavizando o perfil da solução e reduzindo a amplitude ao longo do tempo. Esse efeito é leve em \( t=1 \), mas torna-se mais acentuado em \( t=3 \) e \( t=5 \), onde a forma do pico é significativamente alisada e menos definida. Esse comportamento é característico do método Upwind de primeira ordem, que, embora estável, apresenta perdas de precisão em problemas com descontinuidades.
+
+\subsection{Implementação em Python}
+
+O código em Python é utilizado para resolver a advecção com o método Upwind, aplicando condições de contorno periódicas. O código é estruturado com uma função principal \texttt{resolverAdveccao} para calcular a solução da advecção para diferentes métodos numéricos e uma função específica para o método Upwind.
+
+\begin{lstlisting}[language=Python, caption={Código para resolver a advecção usando o método Upwind}, label={lst:codigo_upwind}]
+# Função para resolver a advecção com diferentes métodos numéricos
+def resolverAdveccao(metodo, condicaoInicial, intervaloTempo, intervaloEspacial, numeroCourant, tempoFinal):
+    """
+    Calcula a solução da advecção para um determinado método e tempo final.
+    """
+    densidade = condicaoInicial.copy()
+    tempoAtual = 0
+    while tempoAtual < tempoFinal:
+        densidade = metodo(densidade, intervaloTempo, intervaloEspacial, numeroCourant)
+        tempoAtual += intervaloTempo
+    return densidade
+
+# Método Upwind com condições de contorno periódicas
+def metodoUpwind(densidade, intervaloTempo, intervaloEspacial, numeroCourant):
+    """
+    Calcula a solução de advecção usando o método Upwind.
+    """
+    novaDensidade = densidade.copy()
+    for i in range(numPontosEspaco):
+        novaDensidade[i] = densidade[i] - numeroCourant * (densidade[i] - densidade[i-1])
+    return novaDensidade
+
+# Cálculo da densidade para diferentes tempos
+densidadeUpwind1 = resolverAdveccao(metodoUpwind, condicaoInicial, intervaloTempo, intervaloEspacial, numeroCourant, tempoFinal1)
+densidadeUpwind3 = resolverAdveccao(metodoUpwind, condicaoInicial, intervaloTempo, intervaloEspacial, numeroCourant, tempoFinal3)
+densidadeUpwind5 = resolverAdveccao(metodoUpwind, condicaoInicial, intervaloTempo, intervaloEspacial, numeroCourant, tempoFinal5)
+\end{lstlisting}
+
+
+A função \texttt{resolverAdveccao} calcula a evolução da densidade ao longo do tempo até atingir o tempo final especificado. A função \texttt{metodoUpwind} implementa o método Upwind para calcular a nova densidade em cada ponto do espaço, utilizando o número de Courant especificado.
