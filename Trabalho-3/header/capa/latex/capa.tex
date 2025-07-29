@@ -1,0 +1,37 @@
+\begin{titlepage}
+    \centering
+    % Desenhar a margem
+    \begin{tikzpicture}[remember picture, overlay]
+        \draw[line width = 4pt] ($(current page.north west) + (20mm, -20mm)$) rectangle ($(current page.south east) + (-10mm,10mm)$);
+        \draw[line width = 1pt] ($(current page.north west) + (21.5mm,-21.5mm)$) rectangle ($(current page.south east) + (-11.5mm,11.5mm)$);
+    \end{tikzpicture}
+
+    % Linha de logos
+    \includegraphics[height=0.151\textwidth]{header/contra-capa/assets/uerj.png}\hfill
+    \includegraphics[height=0.15\textwidth]{header/contra-capa/assets/iprj.jpeg}\hfill
+
+    \vspace{2cm} % Espaço vertical após os logos
+
+    % Informações do curso
+    {\Large\bfseries Instituto Politécnico do Estado do Rio de Janeiro \par}
+    \vspace{0.5cm}
+    {\large Curso de Engenharia da Computação \par}
+
+    \vspace{3cm} % Espaço vertical antes do título da atividade
+
+    % Nome do estudante
+    {\large\bfseries Guilherme Cagide Fialho \par}
+
+    \vspace{3cm}
+
+    % Título da atividade
+    {\large\bfseries Análise Comparativa de Métodos TVD Aplicados à Solução da Equação de Advecção \par}
+
+    \vfill % Empurra o restante para o fundo da página
+
+    % Local e ano
+    {\large\bfseries Nova Friburgo \par}
+    \vspace{0.3cm}
+    {\large\bfseries 2024 \par}
+\end{titlepage}
+\newpage % Começa uma nova página após a capa

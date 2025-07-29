@@ -1,0 +1,56 @@
+\subsection{O Método Van Albada}
+
+O limitador de Van Albada é amplamente utilizado em métodos TVD devido à sua capacidade de reduzir oscilações artificiais enquanto mantém a suavidade das soluções numéricas. O limitador é dado por:
+
+\begin{equation}
+    \phi(\theta) = \frac{\theta + \theta^2}{1 + \theta^2 + \epsilon},
+\end{equation}
+
+onde \(\theta\) é o gradiente relativo entre células adjacentes, e \(\epsilon\) é um pequeno valor para evitar divisões por zero.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\textwidth]{code/images/Van Albada.png}
+    \caption{Solução Van Albada para \( t=1 \), \( t=3 \), e \( t=5 \), com a condição inicial representada pela linha tracejada.}
+\end{figure}
+
+\begin{table}[H]
+    \centering
+    \input{code/tables/Van Albada.tex}
+    \caption{Tabela de resultados para o método Van Albada nas posições espaciais selecionadas e diferentes tempos.}
+    \label{tab:van_albada}
+\end{table}
+
+\subsection{Análise dos Resultados do Método Van Albada}
+
+O método Van Albada mostra-se eficaz na preservação da monotonicidade das soluções, mesmo em regiões de gradientes acentuados. Na Figura \ref{fig:van_albada}, observa-se que, para \( t = 1 \), o perfil inicial é bem preservado, com leve dissipação nas bordas. Para \( t = 3 \) e \( t = 5 \), a solução mantém a estabilidade sem introduzir oscilações significativas, destacando a eficiência do limitador de Van Albada em contextos onde a suavidade e precisão são essenciais.
+
+\subsection{Implementação em Python}
+
+O código em Python para o método Van Albada utiliza a função principal \texttt{resolverAdveccaoTVD}, que aplica o limitador e calcula a evolução da densidade ao longo do tempo. A implementação do limitador Van Albada é dada por:
+
+\begin{lstlisting}[language=Python, caption={Código para resolver a advecção usando o método Van Albada}, label={lst:codigo_van_albada}]
+def limitadorVanAlbada(theta):
+    return (theta + theta**2) / (1 + theta**2 + 1e-6)
+
+def metodoTvdVanAlbada(densidade, nt, intervaloTempo, intervaloEspacial, numeroCourant):
+    """
+    Método TVD para resolver a advecção utilizando o limitador de Van Albada.
+    """
+    for n in range(nt):
+        novaDensidade = densidade.copy()
+        for i in range(len(densidade)):
+            esquerda = (i - 1) % len(densidade)
+            direita = (i + 1) % len(densidade)
+            # Calcula o gradiente relativo (theta)
+            theta = (densidade[i] - densidade[esquerda]) / (densidade[direita] - densidade[i] + 1e-6)
+            # Fluxos para direita e esquerda
+            fluxoDireita = densidade[i] + 0.5 * numeroCourant * (1 - numeroCourant) * limitadorVanAlbada(theta) * (densidade[direita] - densidade[i])
+            fluxoEsquerda = densidade[esquerda] + 0.5 * numeroCourant * (1 - numeroCourant) * limitadorVanAlbada(theta) * (densidade[i] - densidade[esquerda])
+            # Atualiza a densidade
+            novaDensidade[i] = densidade[i] - numeroCourant * (fluxoDireita - fluxoEsquerda)
+        densidade = novaDensidade.copy()
+    return densidade
+\end{lstlisting}
+
+Como visto no código \ref{lst:codigo_van_albada}, o limitador Van Albada suaviza as oscilações enquanto preserva a precisão em gradientes suaves. O número de Courant \(C=0,8\) garante a estabilidade da solução numérica em cada passo temporal.

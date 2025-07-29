@@ -1,0 +1,11 @@
+\section{Conclusão Geral}
+
+A análise comparativa entre os métodos TVD (Osher, Sweby e Van Albada) para a resolução da equação de advecção unidimensional demonstrou suas capacidades em balancear precisão e estabilidade ao longo do tempo. Esses métodos foram projetados para reduzir oscilações e dissipações típicas de métodos de menor ordem, como o Upwind, preservando de forma mais eficaz as descontinuidades da solução.
+
+O método \textbf{Osher} apresentou boa precisão na manutenção das características iniciais da solução, com uma leve dissipação em tempos mais longos. Isso reflete sua capacidade de balancear estabilidade e fidelidade, mas sem exagerar em suavizações que comprometam o perfil da solução.
+
+O método \textbf{Sweby}, por sua vez, mostrou resultados similares, mas com uma leve tendência a introduzir oscilações em transições mais abruptas, principalmente para \( t = 3 \) e \( t = 5 \). Apesar disso, sua preservação geral do perfil inicial ainda é satisfatória, destacando-se como uma escolha viável em problemas onde a alta resolução é necessária.
+
+Por fim, o método \textbf{Van Albada} demonstrou ser o mais equilibrado entre os três, oferecendo alta precisão com mínima introdução de oscilações e mantendo a estabilidade ao longo de todas as simulações. Isso o torna uma escolha robusta para problemas que demandam uma representação precisa das descontinuidades sem comprometer a estabilidade numérica.
+
+Esses resultados indicam que a escolha do método numérico deve ser guiada pelo objetivo específico do problema: para soluções onde a fidelidade e precisão são cruciais, métodos como o Van Albada são preferíveis. No entanto, para problemas onde estabilidade é prioritária, mesmo à custa de maior dissipação, o método Osher pode ser mais indicado. A análise também enfatiza a importância de ajustar os métodos conforme as características do problema, evitando generalizações que podem levar a escolhas subótimas.

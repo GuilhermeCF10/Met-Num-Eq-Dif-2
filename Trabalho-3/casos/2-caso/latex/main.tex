@@ -1,0 +1,67 @@
+\subsection{O Método Sweby}
+
+O método Sweby é um método do tipo TVD (Total Variation Diminishing) que utiliza um limitador para evitar oscilações não físicas em regiões de alta variação. O limitador Sweby é ajustável por meio do parâmetro \(\beta\), permitindo balancear precisão e dissipação numérica \cite{sweby1984high}.
+
+A equação geral para o fluxo numérico utilizando o limitador Sweby é dada por:
+
+\begin{equation}
+    \phi_{\text{lim}} = \max\left(0, \min\left(\beta \theta, \min\left(1, \theta\right)\right)\right),
+\end{equation}
+
+onde \(\theta\) é o gradiente relativo entre as células adjacentes, e \(\beta\) é o parâmetro de controle do limitador, comumente usado como \(\beta = 1,5\).
+
+A equação do método TVD aplicado ao método Sweby é expressa como:
+
+\begin{equation}
+    Q_i^{n+1} = Q_i^n - C (F_{i+1/2} - F_{i-1/2}),
+\end{equation}
+
+onde os fluxos \(F_{i+1/2}\) e \(F_{i-1/2}\) são calculados com base no limitador Sweby.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\textwidth]{code/images/Sweby.png}
+    \caption{Solução Sweby para \(t=1\), \(t=3\) e \(t=5\), com a condição inicial representada pela linha tracejada.}
+    \label{fig:sweby}
+\end{figure}
+
+\begin{table}[H]
+    \centering
+    \input{code/tables/Sweby.tex}
+    \caption{Tabela de resultados para o método Sweby nas posições espaciais selecionadas e diferentes tempos.}
+    \label{tab:sweby}
+\end{table}
+
+\subsection{Análise dos Resultados do Método Sweby}
+
+A Figura~\ref{fig:sweby} apresenta os resultados obtidos com o método Sweby nos instantes \(t=1\), \(t=3\) e \(t=5\). Para \(t=1\), a solução mantém o perfil da condição inicial com alta precisão, preservando os gradientes e evitando oscilações. Nos tempos \(t=3\) e \(t=5\), observam-se pequenas alterações na amplitude das regiões de alta variação, porém sem oscilações significativas, evidenciando a eficácia do limitador Sweby em controlar oscilações enquanto mantém uma boa precisão.
+
+\subsection{Implementação em Python}
+
+O código em Python para o método Sweby utiliza a função principal \texttt{resolverAdveccaoTVD}, que aplica o limitador e calcula a evolução da densidade ao longo do tempo, conforme mostrado na Listagem~\ref{lst:codigo_sweby}. A implementação do limitador Sweby é dada por:
+
+\begin{lstlisting}[language=Python, caption={Código para resolver a advecção usando o método Sweby}, label={lst:codigo_sweby}]
+def limitadorSweby(theta, beta=1.5):
+    return np.maximum(0, np.minimum(beta * theta, np.minimum(1, theta)))
+
+def metodoTvdSweby(densidade, nt, intervaloTempo, intervaloEspacial, numeroCourant):
+    """
+    Método TVD para resolver a advecção utilizando o limitador de Sweby.
+    """
+    for n in range(nt):
+        novaDensidade = densidade.copy()
+        for i in range(len(densidade)):
+            esquerda = (i - 1) % len(densidade)
+            direita = (i + 1) % len(densidade)
+            # Calcula o gradiente relativo (theta)
+            theta = (densidade[i] - densidade[esquerda]) / (densidade[direita] - densidade[i] + 1e-6)
+            # Fluxos para direita e esquerda
+            fluxoDireita = densidade[i] + 0.5 * numeroCourant * (1 - numeroCourant) * limitadorSweby(theta) * (densidade[direita] - densidade[i])
+            fluxoEsquerda = densidade[esquerda] + 0.5 * numeroCourant * (1 - numeroCourant) * limitadorSweby(theta) * (densidade[i] - densidade[esquerda])
+            # Atualiza a densidade
+            novaDensidade[i] = densidade[i] - numeroCourant * (fluxoDireita - fluxoEsquerda)
+        densidade = novaDensidade.copy()
+    return densidade
+\end{lstlisting}
+
+A implementação do método Sweby garante estabilidade e precisão ao controlar oscilações em gradientes acentuados. O número de Courant \(C=0,8\) é usado para calcular o fluxo numérico em cada interface, assegurando a convergência da solução.

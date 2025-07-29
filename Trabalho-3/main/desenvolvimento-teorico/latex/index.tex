@@ -1,0 +1,45 @@
+\section{Desenvolvimento Teórico}
+
+A equação de advecção unidimensional descreve o transporte de uma quantidade conservada, como a concentração de um traçador, ao longo de um eixo espacial. Para resolver essa equação numericamente, é utilizado o método dos Volumes Finitos, que permite a discretização do espaço e do tempo, garantindo uma formulação adequada para a conservação da quantidade transportada \cite{leveque2002finite}. A equação de advecção, em sua forma conservativa, é dada por:
+
+\begin{equation}
+    \frac{\partial \Phi}{\partial t} + \frac{\partial}{\partial x} (u \Phi) = 0,
+\end{equation}
+
+onde $\Phi$ representa a variável dependente (concentração do traçador) e $u$ é a velocidade de advecção. Com $u$ constante, a equação simplifica-se para:
+
+\begin{equation}
+    \frac{\partial \Phi}{\partial t} + u \frac{\partial \Phi}{\partial x} = 0.
+\end{equation}
+
+Neste trabalho, a solução numérica é obtida utilizando métodos do tipo \textbf{TVD (Total Variation Diminishing)}. Esses métodos são amplamente reconhecidos por sua capacidade de preservar a monotonicidade da solução e evitar oscilações artificiais, especialmente em regiões com gradientes acentuados ou descontinuidades \cite{harten1983high}. Os métodos implementados são:
+
+\begin{itemize}
+    \item \textbf{Limitador de Osher}: Este limitador é projetado para reduzir oscilações artificiais e garantir que a solução permaneça monotônica. Ele é definido como:
+          \[
+              \phi_{\text{lim}}(\theta) = \max(0, \min(1, \theta)),
+          \]
+          onde $\theta$ é uma medida da variação local da solução \cite{osher1984rktvd}.
+
+    \item \textbf{Limitador de Sweby}: Este limitador permite maior controle sobre a dissipação, introduzindo um parâmetro ajustável $\beta$. Sua formulação é:
+          \[
+              \phi_{\text{lim}}(\theta) = \max(0, \min(\beta \theta, \min(1, \theta))),
+          \]
+          onde valores típicos de $\beta$ estão na faixa $1 \leq \beta \leq 2$ \cite{sweby1984high}.
+
+    \item \textbf{Limitador de Van Albada}: Este limitador equilibra suavidade e precisão, sendo especialmente útil em regiões de gradientes suaves. Sua definição é:
+          \[
+              \phi_{\text{lim}}(\theta) = \frac{\theta + \theta^2}{1 + \theta^2}.
+          \]
+          Este limitador é amplamente utilizado devido à sua estabilidade em problemas com gradientes suaves \cite{vanalbada1982family}.
+\end{itemize}
+
+Para garantir a estabilidade das simulações, o número de Courant é fixado em $C = 0,8$, respeitando a condição CFL \cite{leveque2002finite}. A condição inicial é definida por uma função composta de uma gaussiana e um valor constante em um intervalo específico, representando um perfil inicial com gradientes suaves e regiões de concentração uniforme. As simulações são realizadas para os instantes de tempo $t = 1$ e $t = 5$, sob condições de contorno periódicas.
+
+Os fluxos nas interfaces dos volumes finitos são calculados considerando os termos anti-difusivos controlados pelos limitadores. A formulação geral do fluxo numérico nos métodos TVD é dada por:
+\[
+    F_{i+1/2} = u \Phi_i + \frac{u}{2}(1 - C) \phi_{\text{lim}}(\theta_i)(\Phi_{i+1} - \Phi_i),
+\]
+onde $\theta_i$ é a razão entre os gradientes locais definidos para o intervalo \cite{leveque2002finite}.
+
+Os resultados obtidos serão analisados com gráficos que comparam a solução analítica com as soluções numéricas, permitindo observar a influência de cada limitador na dissipação e dispersão do perfil inicial. Além disso, tabelas apresentarão valores em pontos específicos do domínio para uma análise quantitativa da precisão de cada método.

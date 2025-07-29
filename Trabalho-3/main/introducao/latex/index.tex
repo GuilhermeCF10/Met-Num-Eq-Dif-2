@@ -1,0 +1,11 @@
+\section{Introdução}
+
+A equação de advecção é uma ferramenta matemática essencial para modelar o transporte de substâncias em um fluido, sendo amplamente empregada em diversas áreas da engenharia e das ciências aplicadas. Sua formulação descreve como uma propriedade escalar, como a concentração de um traçador, se desloca ao longo do tempo em função de uma velocidade de advecção constante. Para problemas práticos, a solução da equação de advecção fornece uma compreensão valiosa sobre o comportamento de substâncias transportadas em meios físicos, como no estudo de escoamentos em reservatórios ou no transporte de poluentes em corpos d'água.
+
+Neste trabalho, a equação de advecção unidimensional será resolvida utilizando o método dos volumes finitos, que preserva a forma conservativa da equação. Os fluxos nas interfaces dos volumes serão calculados com a introdução de termos anti-difusivos controlados por funções limitadoras específicas. Serão implementados três métodos numéricos do tipo \textbf{TVD (Total Variation Diminishing)}: Osher, Sweby e Van Albada. Esses métodos são conhecidos por sua capacidade de preservar a monotonicidade e reduzir oscilações artificiais próximas a descontinuidades ou gradientes íngremes.
+
+Para garantir a estabilidade das simulações, o número de Courant será fixado em \(C = 0,8\), respeitando a condição CFL. A condição inicial utilizada é composta por uma combinação de uma função gaussiana e uma função por partes, representando um perfil inicial com gradientes suaves e regiões de concentração constante. As simulações serão realizadas para os instantes de tempo \(t = 1\) e \(t = 5\), utilizando condições de contorno periódicas.
+
+Os resultados obtidos serão comparados com a solução analítica exata, permitindo avaliar a precisão e o comportamento dos métodos numéricos em regiões de gradientes suaves e descontinuidades. Gráficos e tabelas serão gerados automaticamente, organizados em diretórios específicos, para facilitar a análise qualitativa e quantitativa das soluções.
+
+Este estudo busca fornecer uma visão clara sobre as vantagens e limitações dos métodos TVD em problemas de transporte, contribuindo para sua aplicação em contextos práticos e na modelagem de fenômenos naturais e de engenharia.

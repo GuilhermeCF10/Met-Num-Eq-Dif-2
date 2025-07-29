@@ -1,0 +1,60 @@
+\begin{titlepage}
+    \centering
+    % Desenhar a margem
+    \begin{tikzpicture}[remember picture, overlay]
+        \draw[line width = 4pt] ($(current page.north west) + (20mm, -20mm)$) rectangle ($(current page.south east) + (-10mm,10mm)$);
+        \draw[line width = 1pt] ($(current page.north west) + (21.5mm,-21.5mm)$) rectangle ($(current page.south east) + (-11.5mm,11.5mm)$);
+    \end{tikzpicture}
+
+    % Linha de logos
+    \includegraphics[height=0.151\textwidth]{header/contra-capa/assets/uerj.png}\hfill
+    \includegraphics[height=0.15\textwidth]{header/contra-capa/assets/iprj.jpeg}\hfill
+
+    \vspace{2cm} % Espaço vertical após os logos
+
+    % Informações do curso
+    {\Large\bfseries Instituto Politécnico do Estado do Rio de Janeiro \par}
+    \vspace{0.5cm}
+    {\large Graduação em Engenharia da Computação \par}
+
+    \vspace{3cm} % Espaço vertical antes do título da atividade
+
+    % Nome do estudante
+    {\large\bfseries Guilherme Cagide Fialho \par}
+
+    \vspace{1.5cm}
+
+    % Título da atividade
+    {\large\bfseries Análise Comparativa de Métodos TVD Aplicados à Solução da Equação de Advecção \par}
+
+    \vspace{1cm} % Espaço vertical antes das informações adicionais
+
+    % Informações do projeto
+    \begin{flushright}
+        \begin{minipage}{0.5\textwidth}
+            \large
+            \raggedleft % Garante que o texto dentro da minipage seja alinhado à direita
+            Relatório da Disciplina: \\
+            Métodos Numéricos para Equações Diferenciais 2
+        \end{minipage}
+    \end{flushright}
+
+    \vspace{1.5cm}
+
+    % Informações do orientador
+    \begin{flushleft}
+        \begin{minipage}{0.5\textwidth}
+            \large
+            \raggedright
+            Professor: Hélio Pedro Amaral Souto
+        \end{minipage}
+    \end{flushleft}
+
+    \vfill % Empurra o restante para o fundo da página
+
+    % Local e ano
+    {\large Nova Friburgo \par}
+    \vspace{0.3cm}
+    {\large 2024 \par}
+\end{titlepage}
+\newpage % Começa uma nova página após a capa

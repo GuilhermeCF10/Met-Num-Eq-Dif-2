@@ -1,0 +1,204 @@
+% ===============================================================
+% Document Class ================================================
+\documentclass{article}
+
+% ===============================================================
+% Graphic Packages ==============================================
+\usepackage{graphicx}       % Permite a inclusão de imagens no documento.
+\usepackage{tocloft} % Pacote para customização de listas de conteúdos, figuras e tabelas
+\usepackage{tikz}           % Ferramenta poderosa para criar gráficos programaticamente dentro do LaTeX.
+\usetikzlibrary{calc}       % Extensão da biblioteca TikZ que permite cálculos mais complexos de coordenadas.
+\usepackage[portuguese]{babel}
+\usepackage{tocloft} % Pacote para customização de listas
+\renewcommand{\listfigurename}{Lista de Figuras} % Altera o título para português
+\AtBeginDocument{\renewcommand{\contentsname}{Sumário}} % Altera nome de conteudo para sumário
+% ===============================================================
+% Mathematical Tools ============================================
+\usepackage{amsmath}        % Melhora a aparência e a flexibilidade de comandos matemáticos.
+\usepackage{siunitx}        % Facilita o uso de unidades do Sistema Internacional e ajuda a formatar números complexos.
+
+% ===============================================================
+% References =================================
+\usepackage{cite} 
+
+% ===============================================================
+% Font and Text Appearance ======================================
+\usepackage{mathptmx}       % Altera a fonte padrão do documento para Times New Roman.
+
+% ===============================================================
+% Table Caption =================================================
+\usepackage{booktabs}
+\usepackage{caption} 
+
+% ===============================================================
+% Table of Contents Customization ===============================
+\usepackage{tocloft}  % Oferece controle total sobre a aparência das listas de conteúdos, figuras, tabelas, etc.
+
+% ===============================================================
+% Figure Positioning ============================================
+\usepackage{float}     % Melhora a interface para definir o posicionamento de objetos flutuantes como figuras e tabelas.
+
+% ===============================================================
+% Paragraph Spacing and Indentation =============================
+\usepackage{setspace}  % Permite o ajuste fino do espaçamento entre linhas.
+\usepackage{indentfirst} % Adiciona indentação ao primeiro parágrafo de cada seção.
+
+% ===============================================================
+% Page Layout ===================================================
+\usepackage[a4paper, top=3cm, bottom=2cm, left=3cm, right=2cm]{geometry}  % Define as margens de todo o documento.
+\setlength{\parindent}{4em}  % Define o tamanho da indentação para todos os parágrafos.
+\setlength{\emergencystretch}{3em}
+
+% ===============================================================
+% Section Heading Customization =================================
+\makeatletter
+\renewcommand\paragraph{\@startsection{paragraph}{4}{\z@}%
+    {2ex plus 1ex minus .2ex}%
+    {1em}%
+    {\normalfont\normalsize\bfseries}}
+\makeatother
+
+% ===============================================================
+% Urls ==========================================================
+\usepackage{hyperref} % Para criar links clicáveis
+\hypersetup{
+    colorlinks=true,
+    linkcolor=blue,
+    filecolor=magenta,
+    urlcolor=blue,
+    citecolor=blue,
+    pdfborder={0 0 0}  % Remove o quadrado ao redor dos links
+}
+
+% ===============================================================
+% Bloco de código ===============================================
+\usepackage{listings}
+\usepackage[utf8]{inputenc}
+\lstset{ 
+    inputencoding=utf8,
+    extendedchars=true,
+    literate={á}{{\'a}}1 {é}{{\'e}}1 {í}{{\'i}}1 {ó}{{\'o}}1 {ú}{{\'u}}1 
+             {Á}{{\'A}}1 {É}{{\'E}}1 {Í}{{\'I}}1 {Ó}{{\'O}}1 {Ú}{{\'U}}1 
+             {à}{{\`a}}1 {è}{{\`e}}1 {ì}{{\`i}}1 {ò}{{\`o}}1 {ù}{{\`u}}1 
+             {ã}{{\~a}}1 {õ}{{\~o}}1 {â}{{\^a}}1 {ê}{{\^e}}1 {î}{{\^i}}1 
+             {ô}{{\^o}}1 {û}{{\^u}}1 {ä}{{\"a}}1 {ë}{{\"e}}1 {ï}{{\"i}}1 
+             {ö}{{\"o}}1 {ü}{{\"u}}1 {ç}{{\c{c}}}1 {Ç}{{\c{C}}}1
+}
+\usepackage{xcolor}
+\usepackage{courier}
+\lstset{
+  backgroundcolor=\color[RGB]{249,246,239},
+  basicstyle=\ttfamily\footnotesize,
+  breaklines=true,
+  frame=single,
+  numbers=left,
+  numberstyle=\tiny\color{gray},
+  keywordstyle=\color[RGB]{40,40,255},
+  commentstyle=\color[RGB]{0,125,0},
+  stringstyle=\color[RGB]{255,0,0},
+  showstringspaces=false,
+  rulecolor=\color{black},
+  captionpos=b,
+  abovecaptionskip=5pt,
+  belowcaptionskip=5pt,
+  xleftmargin=0.15\textwidth,
+  xrightmargin=0.15\textwidth,
+  morecomment=[l]{//}
+}
+\renewcommand{\lstlistlistingname}{Lista de Códigos} % Comando para renomear o título da Lista de Códigos
+
+% ===============================================================
+% Begin Document ================================================
+\begin{document}
+
+% ===============================================================
+% Capa ==========================================================
+\input{header/capa/latex/capa.tex}
+
+% ===============================================================
+% Contra Capa ===================================================
+\input{header/contra-capa/latex/contra-capa.tex}
+
+% ===============================================================
+% Resumo ========================================================
+\input{main/resumo/latex/resumo.tex}
+
+% ===============================================================
+% Abstract ======================================================
+\input{main/abstract/latex/abstract.tex}
+
+% ===============================================================
+% Lista de figuras ==============================================
+\input{main/lista-de-figuras/latex/index.tex}
+
+% ===============================================================
+% Lista de tabelas ==============================================
+\input{main/lista-de-tabelas/latex/index.tex}
+
+% ===============================================================
+% Lista de códigos ==============================================
+\input{main/lista-de-codigos/latex/index.tex}
+
+% ===============================================================
+% Sumário =======================================================
+\input{main/sumario/latex/index.tex}
+
+% ===============================================================
+% Introdução ====================================================
+\input{main/objetivo/latex/index.tex}
+
+% ===============================================================
+% Introdução ====================================================
+\input{main/introducao/latex/index.tex}
+
+% ===============================================================
+% Desenvolvimento Teórico =======================================
+\input{main/desenvolvimento-teorico/latex/index.tex}
+
+% ===============================================================
+% Atividades ====================================================
+\section{Análise de Resultados}
+Nesta seção, apresentamos a implementação dos métodos numéricos do tipo \textbf{TVD (Total Variation Diminishing)} para resolver a equação de advecção unidimensional. Os métodos foram implementados em Python utilizando as bibliotecas \texttt{numpy}, \texttt{matplotlib.pyplot} e \texttt{pandas} para cálculo, visualização e manipulação de dados, respectivamente.
+
+\begin{itemize}
+    \item \textbf{Velocidade de Advecção} (\( \bar{u} \)): Representa a velocidade constante do fluxo que transporta a substância ao longo do domínio. Foi fixada como \(\bar{u} = 1,0\).
+    \item \textbf{Número de Courant} (\(C\)): Definido como \(C = \frac{\bar{u} \Delta t}{\Delta x}\), onde \(\Delta t\) é o intervalo de tempo e \(\Delta x\) é o intervalo espacial. Para garantir a estabilidade dos métodos numéricos explícitos, usamos \(C = 0,8\), o que satisfaz a condição de estabilidade de Courant-Friedrichs-Lewy (CFL), \(0 \leq C \leq 1\) \cite{leveque2002finite, harten1983high}.
+    \item \textbf{Domínio Espacial} (\([x_{\text{min}}, x_{\text{max}}]\)): Limitado entre 0 e 1, foi discretizado em \(N = 200\) pontos para melhor resolução.
+    \item \textbf{Intervalos de Tempo} (\(t=1\), \(t=5\)): As simulações foram realizadas em dois instantes de tempo para avaliar a evolução da concentração ao longo do domínio.
+    \item \textbf{Condição Inicial} (\(c(x, 0)\)): A concentração inicial foi definida como uma função gaussiana centrada em \(x = 0,3\), somada a uma concentração uniforme entre \(x = 0,6\) e \(x = 0,8\). Esta condição inicial é dada por:
+          \begin{equation}
+              c(x, 0) = 1,5 \exp(-200 \cdot (x - 0,3)^2) +
+              \begin{cases}
+                  1,5, & \text{se } 0,6 \leq x \leq 0,8, \\
+                  0,0, & \text{caso contrário}.
+              \end{cases}
+          \end{equation}
+    \item \textbf{Métodos Numéricos Implementados}:
+          \begin{itemize}
+              \item \textbf{Limitador de Osher}: Reduz oscilações artificiais e preserva monotonicidade em regiões de gradiente acentuado \cite{osher1984rktvd}.
+              \item \textbf{Limitador de Sweby}: Permite ajuste do comportamento anti-difusivo por meio do parâmetro \(\beta\), equilibrando dissipação e precisão \cite{sweby1984high}.
+              \item \textbf{Limitador de Van Albada}: Equilibra suavidade e preservação de monotonicidade, sendo eficiente em gradientes suaves \cite{vanalbada1982family}.
+          \end{itemize}
+    \item \textbf{Resolução das Equações}: A função \texttt{resolverAdveccaoTVD} foi implementada para calcular as soluções numéricas de cada método para os tempos especificados. A cada passo temporal, o fluxo numérico é atualizado com base no limitador escolhido, e os resultados finais são armazenados para análise.
+\end{itemize}
+
+Os resultados numéricos foram comparados com a solução analítica exata, permitindo avaliar a precisão e a estabilidade de cada método. Gráficos comparativos mostram as concentrações ao longo do domínio nos instantes \(t=1\) e \(t=5\), enquanto tabelas apresentam os valores obtidos em pontos específicos, fornecendo uma análise quantitativa detalhada.
+
+
+\input{casos/1-caso/latex/main.tex} % Done
+\input{casos/2-caso/latex/main.tex} % Done
+\input{casos/3-caso/latex/main.tex} % Done
+\input{casos/4-func/latex/index.tex} % Completa e Validada
+
+% ===============================================================
+% Conclusão geral ===============================================
+\input{main/conclusao/latex/index.tex}
+
+% ===============================================================
+% Referencias ===================================================
+\input{main/referencias/latex/index.tex}
+
+% ===============================================================
+% End Document ==================================================
+\end{document}
+
